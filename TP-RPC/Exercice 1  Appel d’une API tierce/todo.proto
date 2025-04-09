@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package todo;
+
+// Définition du service
+service TodoService {
+  rpc AddTask (Task) returns (AddTaskResponse);
+  rpc GetTasks (Empty) returns (TaskList);
+  rpc GetGames (Empty) returns (GameList); // Nouvelle méthode
+}
+
+// Messages utilisés par le service
+message Task {
+  string id = 1;
+  string description = 2;
+}
+
+message AddTaskResponse {
+  string message = 1;
+}
+
+message TaskList {
+  repeated Task tasks = 1;
+}
+
+message Game {
+  string id = 1;
+  string title = 2;
+  string genre = 3;
+  string platform = 4;
+}
+
+message GameList {
+  repeated Game games = 1;
+}
+
+message Empty {}
